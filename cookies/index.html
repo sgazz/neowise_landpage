@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Policy | Neowise</title>
+  <meta name="description" content="Draft Neowise Cookie Policy explaining necessary local and session storage." />
+  <!-- TODO: Replace placeholder domain with production domain before launch. -->
+  <link rel="canonical" href="https://www.neowise.ai/cookies/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cookie Policy | Neowise" />
+  <meta property="og:description" content="Draft Neowise Cookie Policy explaining necessary local and session storage." />
+  <meta property="og:url" content="https://www.neowise.ai/cookies/" />
+  <!-- TODO: Add og:image and twitter:image when the final social preview image is ready. -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cookie Policy | Neowise" />
+  <meta name="twitter:description" content="Draft Neowise Cookie Policy explaining necessary local and session storage." />
+  <meta name="theme-color" content="#08050f" />
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/logo/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png" />
+  <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav legal-nav shell" aria-label="Primary navigation">
+      <a class="site-brand" href="/" aria-label="Neowise home"><img src="../assets/logo/neowise-logo.png" alt="" class="site-brand__logo" /><span class="site-brand__name">Neowise</span></a>
+      <div class="legal-nav-menu"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/cookies/">Cookies</a><a href="/">Home</a></div>
+    </nav>
+  </header>
+  <main class="legal-main" id="main">
+    <div class="shell">
+      <header class="legal-hero">
+        <p class="eyebrow">Legal</p>
+        <h1>Cookie Policy</h1>
+        <p class="legal-meta">Last updated: [INSERT DATE]</p>
+        <p class="legal-note">This document is a draft and should be reviewed before public launch.</p>
+      </header>
+      <div class="legal-content">
+        
+<section class="legal-section"><h2>Introduction</h2><p>Cookies and browser storage are small pieces of information stored by a website in your browser. They can help a website remember settings or support basic interface behavior.</p></section>
+<section class="legal-section"><h2>What we currently use</h2><p>The current Neowise landing page uses only strictly necessary local or session storage for remembering cookie preference choices, remembering whether the beta modal was closed during the current browser session, and basic interface behavior.</p></section>
+<section class="legal-section"><h2>Cookies/storage table</h2><div class="policy-table-wrap"><table class="policy-table"><thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th><th>Category</th></tr></thead><tbody><tr><td>neowiseCookiePreferences</td><td>localStorage</td><td>Stores cookie preference choice</td><td>Until changed or cleared</td><td>Strictly necessary</td></tr><tr><td>neowiseBetaModalClosed</td><td>sessionStorage</td><td>Prevents beta modal from showing repeatedly in same browser session</td><td>Session</td><td>Strictly necessary</td></tr></tbody></table></div></section>
+<section class="legal-section"><h2>What we do not currently use</h2><ul><li>No analytics cookies.</li><li>No advertising cookies.</li><li>No third-party tracking cookies.</li></ul></section>
+<section class="legal-section"><h2>Future optional cookies</h2><p>If analytics or marketing cookies are introduced, users will be asked for consent before they are used.</p></section>
+<section class="legal-section"><h2>Managing preferences</h2><p>You can change preferences using “Privacy settings” in the footer or through your browser settings.</p></section>
+<section class="legal-section"><h2>Contact</h2><p>Contact: info@neowise.ai</p></section>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie notice" hidden>
+    <div>
+      <strong>Privacy-first preferences</strong>
+      <p>Neowise currently uses only necessary storage to keep the site working and remember your preferences. We do not use analytics or marketing cookies at this stage.</p>
+    </div>
+    <div class="cookie-banner__actions">
+      <button class="button button-primary button-small" type="button" data-accept-necessary>Accept necessary only</button>
+      <button class="button button-secondary button-small" type="button" data-open-privacy-settings>Privacy settings</button>
+    </div>
+  </div>
+
+  <div class="modal privacy-settings-modal" id="privacy-settings-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-settings-title" hidden>
+    <div class="modal-backdrop" data-close-privacy-settings></div>
+    <div class="modal-panel" tabindex="-1">
+      <button class="modal-close" type="button" aria-label="Close privacy settings" data-close-privacy-settings>&times;</button>
+      <p class="eyebrow">Privacy</p>
+      <h2 id="privacy-settings-title">Privacy settings</h2>
+      <p>At this stage, Neowise only uses necessary local/session storage. Analytics and marketing cookies are not active.</p>
+      <div class="preference-list">
+        <div class="preference-item"><div><h3>Necessary storage</h3><p>Required for modal dismissal and saving privacy preferences.</p></div><strong>Always active</strong></div>
+        <div class="preference-item is-disabled"><div><h3>Analytics</h3><p>Not active in this prototype.</p></div><strong>Disabled</strong></div>
+        <div class="preference-item is-disabled"><div><h3>Marketing</h3><p>Not active in this prototype.</p></div><strong>Disabled</strong></div>
+      </div>
+      <div class="modal-actions">
+        <button class="button button-primary" type="button" data-save-privacy-settings>Save settings</button>
+        <button class="button button-secondary" type="button" data-close-privacy-settings>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="contact">
+    <div class="shell footer-inner">
+      <div>
+        <a class="site-brand footer-brand" href="/" aria-label="Neowise home"><img src="../assets/logo/neowise-logo.png" alt="" class="site-brand__logo" /><span class="site-brand__name">Neowise</span></a>
+        <p>Personal AI learning mentor.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/cookies/">Cookies</a>
+        <button class="footer-privacy-button" type="button" data-open-privacy-settings>Privacy settings</button>
+        <a href="mailto:info@neowise.ai">Contact</a>
+      </nav>
+
+      <div class="footer-social" aria-label="Social links">
+        <!-- TODO: Add LinkedIn profile URL when available. -->
+        <!-- TODO: Add X/Twitter profile URL when available. -->
+        <a class="social-link" href="mailto:info@neowise.ai" aria-label="Email Neowise">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.75 5h16.5A1.75 1.75 0 0 1 22 6.75v10.5A1.75 1.75 0 0 1 20.25 19H3.75A1.75 1.75 0 0 1 2 17.25V6.75A1.75 1.75 0 0 1 3.75 5Zm.35 2 7.9 5.52L19.9 7H4.1Zm15.9 1.92-7.43 5.19a1 1 0 0 1-1.14 0L4 8.92V17h16V8.92Z" /></svg>
+        </a>
+      </div>
+      <small>&copy; 2026 Neowise. All rights reserved.</small>
+    </div>
+  </footer>
+
+</body>
+</html>
