@@ -200,6 +200,21 @@
           </ol>
         </div>
       </section>
+
+      <section class="section section-muted" id="beta-invitations" aria-labelledby="beta-invitations-title">
+        <div class="shell">
+          <div class="section-head wide">
+            <p class="eyebrow">Beta invitations</p>
+            <h2 id="beta-invitations-title">Choose the beta invitation that fits you best.</h2>
+          </div>
+          <div class="card-grid three">
+            <a class="card invite-card" href="/beta/students/"><h3>Students</h3><p>Test Neowise with real study material, exam preparation, notes, and recall.</p></a>
+            <a class="card invite-card" href="/beta/educators/"><h3>Educators</h3><p>Help us understand how AI guidance can support, not replace, human teaching.</p></a>
+            <a class="card invite-card" href="/beta/lifelong-learners/"><h3>Lifelong learners</h3><p>Explore career learning, independent study, and personal growth workflows.</p></a>
+          </div>
+        </div>
+      </section>
+
       <section class="section beta-section" id="request-access" aria-labelledby="request-title">
         <div class="shell beta-panel">
           <div>
@@ -208,8 +223,8 @@
             <p>We are opening access gradually so we can learn from real use and improve carefully.</p>
             <p class="privacy-note">No spam. We will only contact you about Neowise beta access. You can ask us to remove your request at any time.</p>
           </div>
-          <!-- TODO: Connect beta form to backend or email provider before public launch. -->
-          <form class="form beta-form" action="#" method="post" data-message="Thank you — your beta request has been noted for this prototype." aria-describedby="beta-page-status">
+          <form class="form beta-form" action="#" method="post" data-beta-form="true" data-beta-source="beta-page" aria-describedby="beta-page-status">
+            <input type="hidden" name="source" value="beta-page" />
             <div class="field">
               <label for="beta-page-name">Name</label>
               <input id="beta-page-name" name="name" type="text" autocomplete="name" required />
@@ -257,6 +272,25 @@
           <p class="form-status" id="beta-page-status" role="status" aria-live="polite">
           </p>
         </form>
+      </div>
+    </section>
+    <section class="section section-muted" id="share-beta" aria-labelledby="share-beta-title">
+      <div class="shell share-panel" data-share-url="https://www.neowise.ai/beta/?utm_source=copy&utm_medium=referral&utm_campaign=beta_invite" data-share-title="Join the Neowise private beta" data-share-text="Neowise is opening a private beta for learners, students, and educators. Help shape a personal AI learning mentor built around understanding, practice, memory, and progress.">
+        <div>
+          <p class="eyebrow">Share</p>
+          <h2 id="share-beta-title">Share the beta invitation</h2>
+          <p>Know a student, lifelong learner, or educator who could help shape Neowise? Share the private beta invitation.</p>
+        </div>
+        <div class="share-actions" aria-label="Share beta invitation">
+          <button class="share-button" type="button" data-share-beta>Share invitation</button>
+          <button class="share-button" type="button" data-copy-beta-link>Copy beta link</button>
+          <a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dlinkedin%26utm_medium%3Dsocial%26utm_campaign%3Dbeta_invite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="share-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dbeta_invite&text=Neowise%20is%20inviting%20early%20learners%20to%20test%20a%20personal%20learning%20system." target="_blank" rel="noopener noreferrer">X / Twitter</a>
+          <a class="share-link" href="https://wa.me/?text=Neowise%20is%20inviting%20early%20learners%20to%20test%20a%20personal%20learning%20system%3A%20https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dwhatsapp%26utm_medium%3Dmessage%26utm_campaign%3Dbeta_invite" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="share-link" href="mailto:?subject=Neowise private beta invitation&body=I thought you might be interested in testing Neowise, a personal learning system currently in private beta.%0A%0AApply here:%0Ahttps://www.neowise.ai/beta/?utm_source=email&utm_medium=referral&utm_campaign=beta_invite">Email</a>
+        </div>
+        <input class="share-copy-source" type="text" value="https://www.neowise.ai/beta/?utm_source=copy&utm_medium=referral&utm_campaign=beta_invite" readonly tabindex="-1" aria-hidden="true" />
+        <p class="share-status" data-share-status aria-live="polite"></p>
       </div>
     </section>
     <section class="section" id="faq" aria-labelledby="faq-title">

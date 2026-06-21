@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neowise — The Operating System for Human Learning</title>
   <meta name="description" content="Neowise is a personal AI learning mentor that builds a learning profile, tracks understanding, and helps learners practice, remember, and progress over time." />
-  <!-- TODO: Replace placeholder domain with production domain before launch. -->
   <link rel="canonical" href="https://www.neowise.ai/" />
 
   <meta property="og:type" content="website" />
@@ -286,6 +285,25 @@
       </div>
     </section>
 
+
+
+    <section class="section section-muted" id="trust" aria-labelledby="trust-title">
+      <div class="shell">
+        <div class="section-head wide">
+          <p class="eyebrow">Trust</p>
+          <h2 id="trust-title">Built with early learners before public launch.</h2>
+        </div>
+        <div class="trust-grid">
+          <article class="trust-card"><h3>Who is behind Neowise</h3><p>Neowise is being built by a small product team combining software engineering, learning design, and hands-on experimentation with AI-assisted education.</p></article>
+          <article class="trust-card"><h3>Why now</h3><p>AI has made individual guidance possible at a scale that older learning platforms could not support. The question is no longer whether AI can answer a question, but whether it can help a person build lasting understanding.</p></article>
+          <article class="trust-card"><h3>What beta testers get</h3><p>Beta testers get early access to Neowise, a chance to use it with real learning material, and a direct role in shaping how the system explains, remembers, guides, and supports learning.</p></article>
+          <article class="trust-card"><h3>How long testing lasts</h3><p>The first beta cycle is designed as a focused 2–4 week testing period, depending on the learner profile and feedback depth.</p></article>
+          <article class="trust-card"><h3>What feedback we need</h3><p>We are looking for specific feedback: where Neowise feels useful, where it feels generic, where explanations break down, what users return to, and what would make it valuable enough to keep using.</p></article>
+          <article class="trust-card"><h3>What happens after applying</h3><p>After applying, selected testers receive access instructions and a short testing guide. The beta remains intentionally small so the team can learn from real use, not vanity metrics.</p></article>
+        </div>
+      </div>
+    </section>
+
     <section class="section beta-section" id="beta" aria-labelledby="beta-title">
       <div class="shell beta-panel">
         <div>
@@ -326,12 +344,16 @@
       <h2 id="beta-modal-title">Join the Neowise beta community</h2>
       <p>Be among the first learners to help shape a personal AI mentor designed around understanding, practice, memory, and progress.</p>
 
-      <!-- TODO: Connect this modal form to the Neowise beta backend, waitlist API, or CRM endpoint. -->
-      <form class="form modal-form" action="#" method="post" data-message="Thank you — your beta request has been noted for this prototype." aria-describedby="modal-beta-status">
+      <form class="form modal-form" action="#" method="post" data-beta-form="true" data-beta-source="home-modal" aria-describedby="modal-beta-status">
+        <input type="hidden" name="source" value="home-modal" />
         <div class="field"><label for="modal-name">Name</label><input id="modal-name" name="name" type="text" autocomplete="name" required /></div>
         <div class="field"><label for="modal-email">Email</label><input id="modal-email" name="email" type="email" autocomplete="email" required /></div>
         <div class="field"><label for="modal-role">I am a:</label><select id="modal-role" name="role" required><option value="">Choose one</option><option>Student</option><option>Secondary school pupil</option><option>Lifelong learner</option><option>Educator</option><option>Parent</option><option>Other</option></select></div>
         <div class="field"><label for="modal-learning">What would you like Neowise to help you learn? <span>Optional</span></label><textarea id="modal-learning" name="learning" rows="4"></textarea></div>
+        <div class="field checkbox-field">
+          <input id="modal-consent" name="consent" type="checkbox" required />
+          <label for="modal-consent">I agree to be contacted about Neowise beta access.</label>
+        </div>
         <button class="button button-primary" type="submit">Request beta access</button>
         <p class="privacy-note modal-note">No spam. We will only contact you about Neowise beta access.</p>
         <p class="form-status" id="modal-beta-status" role="status" aria-live="polite"></p>
