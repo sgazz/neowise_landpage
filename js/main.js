@@ -13,12 +13,32 @@ const openPrivacyButtons = document.querySelectorAll('[data-open-privacy-setting
 const closePrivacyButtons = document.querySelectorAll('[data-close-privacy-settings]');
 const acceptNecessaryButtons = document.querySelectorAll('[data-accept-necessary]');
 const savePrivacyButtons = document.querySelectorAll('[data-save-privacy-settings]');
-const NEOWISE_BETA_API_URL =
-  window.NEOWISE_BETA_API_URL || "http://localhost:8787/api/beta-request";
+const getDefaultBetaApiUrl = () => {
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return 'http://localhost:8787/api/beta-request';
+  }
+  return '/api/beta-request';
+};
+const NEOWISE_BETA_API_URL = window.NEOWISE_BETA_API_URL || getDefaultBetaApiUrl();
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 const cookiePreferenceKey = 'neowiseCookiePreferences';
 const themeStorageKey = 'neowiseTheme';
+const storageGet = (key) => {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+};
+const storageSet = (key, value) => {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Storage may be unavailable in private browsing or strict browser settings.
+  }
+};
 let activeModal = null;
 let activePanel = null;
 let modalTrigger = null;
@@ -53,7 +73,7 @@ const initMotionReveal = () => {
   revealElements.forEach((element) => observer.observe(element));
 };
 
-const hasCookiePreferences = () => Boolean(localStorage.getItem(cookiePreferenceKey));
+const hasCookiePreferences = () => Boolean(storageGet(cookiePreferenceKey));
 
 const shouldAutoOpenBeta = () => betaModal && sessionStorage.getItem('neowiseBetaModalClosed') !== 'true';
 
@@ -66,7 +86,7 @@ const scheduleBetaModal = () => {
 };
 
 const saveNecessaryPreferences = () => {
-  localStorage.setItem(cookiePreferenceKey, JSON.stringify({
+  storageSet(cookiePreferenceKey, JSON.stringify({
     necessary: true,
     analytics: false,
     marketing: false,
@@ -430,7 +450,7 @@ document.querySelectorAll('[data-copy-beta-link]').forEach((button) => {
 });
 
 const getPreferredTheme = () => {
-  const saved = localStorage.getItem(themeStorageKey);
+  const saved = storageGet(themeStorageKey);
   if (saved === 'light' || saved === 'dark') return saved;
   return 'light';
 };
@@ -461,7 +481,7 @@ const initTheme = () => {
   document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
     button.addEventListener('click', () => {
       const nextTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      localStorage.setItem(themeStorageKey, nextTheme);
+      storageSet(themeStorageKey, nextTheme);
       applyTheme(nextTheme);
     });
   });

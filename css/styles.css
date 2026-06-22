@@ -506,3 +506,5 @@ textarea { resize: vertical; }
 .invite-card:hover { transform: translateY(-3px); border-color: var(--color-brand-border); background: rgba(var(--color-brand-rgb), .12); }
 .trust-note { margin-top: 1.25rem; border: 1px solid var(--color-brand-border); border-radius: var(--radius-md); padding: 1rem; color: var(--muted-strong); background: rgba(var(--color-brand-rgb), .1); }
 @media (min-width: 760px) { .trust-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.thank-you-main h2 { margin-bottom: clamp(1.25rem, 3vw, 1.75rem); }

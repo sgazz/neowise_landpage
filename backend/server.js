@@ -30,16 +30,24 @@ function validateEnvironment() {
   }
 
   if (NODE_ENV === "production") {
+    const fatalIssues = [];
+
     if (ADMIN_TOKEN === DEFAULT_ADMIN_TOKEN) {
-      console.warn("PRODUCTION WARNING: ADMIN_TOKEN is missing or still using the default value.");
+      fatalIssues.push("ADMIN_TOKEN must be set to a strong unique value");
     }
 
     if (IP_HASH_SALT === DEFAULT_IP_HASH_SALT) {
-      console.warn("PRODUCTION WARNING: IP_HASH_SALT is missing or still using the default value.");
+      fatalIssues.push("IP_HASH_SALT must be set to a strong unique value");
     }
 
     if (FRONTEND_ORIGIN === "*") {
-      console.warn("PRODUCTION WARNING: FRONTEND_ORIGIN is '*'. Restrict it before production launch.");
+      fatalIssues.push("FRONTEND_ORIGIN must list allowed origins (not '*')");
+    }
+
+    if (fatalIssues.length) {
+      console.error("Neowise beta backend refused to start in production:");
+      fatalIssues.forEach((issue) => console.error(`- ${issue}`));
+      process.exit(1);
     }
   }
 }
@@ -79,6 +87,11 @@ app.use((req, res, next) => {
 function sanitizeString(value) {
   if (typeof value !== "string") return "";
   return value.trim().replace(/[\u0000-\u001F\u007F]/g, "");
+}
+
+function clampString(value, maxLength) {
+  const sanitized = sanitizeString(value);
+  return sanitized.length > maxLength ? sanitized.slice(0, maxLength) : sanitized;
 }
 
 function isValidEmail(email) {
@@ -138,7 +151,8 @@ function rateLimit(req, res, next) {
 function requireAdmin(req, res, next) {
   const header = req.get("authorization") || "";
   const bearerToken = header.startsWith("Bearer ") ? header.slice(7) : "";
-  const queryToken = typeof req.query.token === "string" ? req.query.token : "";
+  const queryToken =
+    NODE_ENV !== "production" && typeof req.query.token === "string" ? req.query.token : "";
 
   if (bearerToken === ADMIN_TOKEN || queryToken === ADMIN_TOKEN) {
     return next();
@@ -239,17 +253,17 @@ app.post("/api/beta-request", rateLimit, async (req, res) => {
     const ip = req.ip || req.socket.remoteAddress || "unknown";
     const record = {
       id: crypto.randomUUID(),
-      name: sanitizeString(req.body.name),
+      name: clampString(req.body.name, 120),
       email,
-      role: sanitizeString(req.body.role),
-      goal: sanitizeString(req.body.goal),
-      source: sanitizeString(req.body.source) || "unknown",
+      role: clampString(req.body.role, 80),
+      goal: clampString(req.body.goal, 2000),
+      source: clampString(req.body.source, 40) || "unknown",
       consent,
-      utm_source: sanitizeString(req.body.utm_source),
-      utm_medium: sanitizeString(req.body.utm_medium),
-      utm_campaign: sanitizeString(req.body.utm_campaign),
+      utm_source: clampString(req.body.utm_source, 100),
+      utm_medium: clampString(req.body.utm_medium, 100),
+      utm_campaign: clampString(req.body.utm_campaign, 100),
       created_at: new Date().toISOString(),
-      user_agent: sanitizeString(req.get("user-agent")),
+      user_agent: clampString(req.get("user-agent"), 500),
       ip_hash: hashIp(ip),
     };
 

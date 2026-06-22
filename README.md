@@ -28,8 +28,11 @@ npm run dev
 The frontend posts beta requests to:
 
 ```txt
-http://localhost:8787/api/beta-request
+http://localhost:8787/api/beta-request   # local development (localhost)
+/api/beta-request                          # production on www.neowise.ai (reverse proxy)
 ```
+
+On production, configure your web server to proxy `/api/beta-request` to the Node backend. The frontend picks the correct URL automatically; override with `window.NEOWISE_BETA_API_URL` only if needed.
 
 ## Admin/export endpoints
 
