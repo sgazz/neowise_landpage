@@ -77,7 +77,7 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="badge motion-reveal motion-delay-1"><span aria-hidden="true"></span>The operating system for human learning</p>
+          <p class="badge motion-reveal motion-delay-1"><span aria-hidden="true"></span>Private beta now open</p>
           <h1 id="hero-title" class="motion-reveal motion-delay-2">The operating system for human learning.</h1>
           <p class="hero-text motion-reveal motion-delay-3">Neowise is a personal AI learning mentor that builds a learning profile, tracks understanding, and helps learners practice, remember, and progress over time.</p>
 
@@ -90,26 +90,33 @@
         </div>
 
         <aside class="hero-preview motion-reveal motion-delay-4" aria-label="Neowise learning system preview">
-          <div class="preview-card">
-            <div class="preview-header">
-              <span>Current topic</span>
-              <strong>Cell biology exam prep</strong>
-            </div>
+          <div class="preview-card" id="hero-preview">
+            <div class="preview-workspace">
+              <div class="preview-sidebar">
+                <div class="preview-header preview-header--compact">
+                  <span>Learning workspace</span>
+                </div>
 
-            <div class="learning-path" aria-label="Learning path progress">
-              <div class="path-row"><span>Understand</span><strong>Complete</strong></div>
-              <div class="path-row active"><span>Practice</span><strong>In progress</strong></div>
-              <div class="path-row"><span>Recall due</span><strong>Tomorrow</strong></div>
-            </div>
+                <div class="learning-path preview-topics" id="preview-topics" aria-label="Learning topics"></div>
+              </div>
 
-            <div class="progress-block">
-              <div class="progress-label"><span>Learning path</span><strong>68%</strong></div>
-              <div class="progress-track"><span style="width: 68%"></span></div>
-            </div>
+              <div class="preview-chat" id="preview-chat" aria-label="Mentor conversation preview" aria-live="polite">
+                <div class="preview-msg mentor">
+                  <span>Neowise Mentor</span>
+                  <p class="preview-copy" id="preview-mentor-text"></p>
+                </div>
 
-            <div class="next-step">
-              <span>Next step</span>
-              <p>Review three weak concepts, then answer a short oral-style practice set.</p>
+                <div class="preview-msg user">
+                  <p class="preview-copy" id="preview-user-text"></p>
+                </div>
+
+                <div class="preview-msg mentor is-highlight">
+                  <span>Next best step</span>
+                  <p class="preview-copy" id="preview-next-text"></p>
+                </div>
+
+                <div class="preview-mini-grid" id="preview-mini-grid" aria-label="Learning progress cues"></div>
+              </div>
             </div>
           </div>
         </aside>
@@ -341,14 +348,15 @@
       <div class="shell faq-shell">
         <div class="section-head motion-reveal center">
           <p class="eyebrow motion-reveal motion-delay-1">FAQ</p>
-          <h2 id="faq-title">Questions before joining the beta.</h2>
+          <h2 id="faq-title">Common questions about Neowise.</h2>
         </div>
         <div class="faq-list motion-reveal motion-delay-1">
-          <details><summary>Is Neowise another ChatGPT wrapper?</summary><p>No. Generic AI chat answers questions in the moment. Neowise is designed around continuity: what you are learning, what you understand, what you need to practice, what you forget, and what should come next.</p></details>
-          <details><summary>Who is Neowise for?</summary><p>Neowise is for students, exam preparation, secondary school pupils, and lifelong learners who want more personal structure while learning.</p></details>
-          <details><summary>Does Neowise replace teachers?</summary><p>No. Neowise is a personal learning layer. It helps learners prepare, practice, understand, and continue between classes, courses, or independent study.</p></details>
-          <details><summary>When will the beta open?</summary><p>The private beta is opening gradually. Early members will be invited in small groups so we can learn from real usage and improve the product carefully.</p></details>
-          <details><summary>Will my learning data be private?</summary><p>Privacy is a core product requirement. The beta will be designed with clear consent, transparent data use, and GDPR-aware practices.</p></details>
+          <details><summary>What is Neowise?</summary><p>Neowise is a personal AI learning mentor that helps each learner understand, practice, remember, and progress over time.</p></details>
+          <details><summary>Who is Neowise built for?</summary><p>Neowise is built for pupils, students, exam preparation, and lifelong learners who want a more personal way to learn.</p></details>
+          <details><summary>How is Neowise different from a regular AI chatbot?</summary><p>A regular chatbot answers a question in the moment. Neowise is designed to build continuity: it follows topics, learning goals, progress, practice, and memory over time.</p></details>
+          <details><summary>What can I learn with Neowise?</summary><p>You can use Neowise for school subjects, university topics, exam preparation, research skills, AI literacy, career learning, and self-directed learning.</p></details>
+          <details><summary>Does Neowise replace teachers?</summary><p>No. Neowise is not designed to replace teachers. It supports learners between lessons, helps them practice, and gives them a more personal learning path.</p></details>
+          <details><summary>Is Neowise available now?</summary><p>Neowise is currently preparing a private beta. Early users can apply to test the product and help shape the learning experience.</p></details>
         </div>
       </div>
     </section>

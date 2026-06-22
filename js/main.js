@@ -487,5 +487,228 @@ const initTheme = () => {
   });
 };
 
+const HERO_PREVIEW_TOPICS = [
+  {
+    category: 'Space science',
+    label: 'The life of a star',
+    mentor: 'Stars do not simply disappear. They change when the balance between gravity and energy breaks.',
+    user: 'Can you explain that without heavy physics?',
+    next: 'First, compare a stable star, a red giant, and a supernova. Then we will connect each stage to one simple force: gravity.',
+    mini: [
+      { label: 'Understand', value: 'star life cycle' },
+      { label: 'Apply', value: '3 examples' },
+      { label: 'Progress', value: '+18% this week' },
+    ],
+  },
+  {
+    category: 'AI literacy',
+    label: 'How OCR works',
+    mentor: 'OCR turns text inside an image or scanned page into editable, searchable text.',
+    user: 'Can you explain it like I\u2019m new to AI tools?',
+    next: 'Compare a photo of a page, a scanned PDF, and editable text. Then we will connect OCR to search and retrieval.',
+    mini: [
+      { label: 'Understand', value: 'OCR basics' },
+      { label: 'Apply', value: '3 examples' },
+      { label: 'Progress', value: '+12% this week' },
+    ],
+  },
+  {
+    category: 'Research skills',
+    label: 'What is RAG?',
+    mentor: 'RAG helps an AI answer using trusted documents instead of relying only on memory.',
+    user: 'So it is like giving the AI a library?',
+    next: 'Yes. First we choose sources, then retrieve the most relevant parts, then generate an answer grounded in them.',
+    mini: [
+      { label: 'Understand', value: 'retrieval' },
+      { label: 'Apply', value: 'source check' },
+      { label: 'Progress', value: '+15% this week' },
+    ],
+  },
+  {
+    category: 'Biology exam',
+    label: 'How cells make energy',
+    mentor: 'Cell respiration is how cells turn glucose and oxygen into usable energy.',
+    user: 'What should I remember for the test?',
+    next: 'Focus on the three stages: glycolysis, Krebs cycle, and electron transport. We will turn them into a memory path.',
+    mini: [
+      { label: 'Understand', value: 'ATP' },
+      { label: 'Apply', value: 'quiz mode' },
+      { label: 'Progress', value: '72%' },
+    ],
+  },
+  {
+    category: 'Math confidence',
+    label: 'Equations without fear',
+    mentor: 'An equation is a balance. Whatever you do to one side, you must do to the other.',
+    user: 'That makes algebra less scary.',
+    next: 'Good. Now solve three simple equations by keeping the balance visible at every step.',
+    mini: [
+      { label: 'Understand', value: 'balance' },
+      { label: 'Apply', value: '5 problems' },
+      { label: 'Progress', value: '+9% today' },
+    ],
+  },
+  {
+    category: 'History insight',
+    label: 'Why empires fall',
+    mentor: 'Empires usually fall from a combination of pressure: economy, leadership, borders, and social trust.',
+    user: 'Can we compare Rome with another empire?',
+    next: 'Yes. Let\u2019s compare Rome and the Ottoman Empire using the same four causes.',
+    mini: [
+      { label: 'Understand', value: 'causes' },
+      { label: 'Apply', value: 'compare' },
+      { label: 'Progress', value: 'Review' },
+    ],
+  },
+  {
+    category: 'Career learning',
+    label: 'From idea to product',
+    mentor: 'A product starts with a real user problem, not with a feature list.',
+    user: 'How do I know if an idea is useful?',
+    next: 'Write the problem in one sentence, define the user, then test if they already try to solve it somehow.',
+    mini: [
+      { label: 'Understand', value: 'user problem' },
+      { label: 'Apply', value: 'idea test' },
+      { label: 'Progress', value: '+21% this month' },
+    ],
+  },
+];
+
+const initHeroPreview = () => {
+  const root = document.querySelector('#hero-preview');
+  const topicsEl = document.querySelector('#preview-topics');
+  const chatEl = document.querySelector('#preview-chat');
+  const mentorText = document.querySelector('#preview-mentor-text');
+  const userText = document.querySelector('#preview-user-text');
+  const nextText = document.querySelector('#preview-next-text');
+  const miniGrid = document.querySelector('#preview-mini-grid');
+
+  if (!root || !topicsEl || !chatEl || !mentorText || !userText || !nextText || !miniGrid) return;
+
+  let activeIndex = 0;
+  let rotateTimer = null;
+  let isAnimating = false;
+  const rotateDelay = 3500;
+  const fadeDuration = reduceMotion ? 0 : 420;
+
+  const miniRows = [];
+
+  const initMiniGrid = () => {
+    miniGrid.replaceChildren();
+
+    for (let i = 0; i < 3; i += 1) {
+      const row = document.createElement('div');
+      row.className = 'path-row';
+      const label = document.createElement('span');
+      const value = document.createElement('strong');
+      row.append(label, value);
+      miniGrid.appendChild(row);
+      miniRows.push({ label, value });
+    }
+  };
+
+  const updateMiniCards = (topic) => {
+    topic.mini.forEach((item, index) => {
+      const row = miniRows[index];
+      if (!row) return;
+      row.label.textContent = item.label;
+      row.value.textContent = item.value;
+    });
+  };
+
+  const renderChat = (topic) => {
+    mentorText.textContent = topic.mentor;
+    userText.textContent = topic.user;
+    nextText.textContent = topic.next;
+    updateMiniCards(topic);
+  };
+
+  const setActiveTopic = (index, { animate = true, force = false } = {}) => {
+    const nextIndex = (index + HERO_PREVIEW_TOPICS.length) % HERO_PREVIEW_TOPICS.length;
+    const topic = HERO_PREVIEW_TOPICS[nextIndex];
+
+    const applyState = () => {
+      activeIndex = nextIndex;
+
+      topicsEl.querySelectorAll('.path-row').forEach((row, rowIndex) => {
+        const isActive = rowIndex === activeIndex;
+        row.classList.toggle('active', isActive);
+        row.setAttribute('aria-selected', String(isActive));
+        row.tabIndex = isActive ? 0 : -1;
+      });
+
+      renderChat(topic);
+    };
+
+    if (!animate || fadeDuration === 0) {
+      chatEl.classList.remove('is-fading');
+      isAnimating = false;
+      applyState();
+      return;
+    }
+
+    if (isAnimating && !force) return;
+    isAnimating = true;
+    chatEl.classList.add('is-fading');
+
+    window.setTimeout(() => {
+      applyState();
+      chatEl.classList.remove('is-fading');
+      window.setTimeout(() => {
+        isAnimating = false;
+      }, fadeDuration);
+    }, fadeDuration);
+  };
+
+  topicsEl.innerHTML = HERO_PREVIEW_TOPICS.map((topic, index) => {
+    const isActive = index === 0;
+    return `<button type="button" class="path-row${isActive ? ' active' : ''}" role="tab" aria-selected="${isActive}" tabindex="${isActive ? 0 : -1}" data-topic-index="${index}"><span>${topic.category}</span><strong>${topic.label}</strong></button>`;
+  }).join('');
+
+  topicsEl.setAttribute('role', 'tablist');
+  topicsEl.setAttribute('aria-orientation', 'vertical');
+
+  initMiniGrid();
+  renderChat(HERO_PREVIEW_TOPICS[0]);
+
+  topicsEl.addEventListener('click', (event) => {
+    const row = event.target.closest('[data-topic-index]');
+    if (!row) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const index = Number(row.dataset.topicIndex);
+    if (Number.isNaN(index) || index === activeIndex) return;
+    setActiveTopic(index, { force: true });
+    restartRotation();
+  });
+
+  topicsEl.addEventListener('keydown', (event) => {
+    if (!['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+
+    let nextIndex = activeIndex;
+    if (event.key === 'ArrowUp') nextIndex = activeIndex - 1;
+    if (event.key === 'ArrowDown') nextIndex = activeIndex + 1;
+    if (event.key === 'Home') nextIndex = 0;
+    if (event.key === 'End') nextIndex = HERO_PREVIEW_TOPICS.length - 1;
+
+    setActiveTopic(nextIndex, { force: true });
+    restartRotation();
+  });
+
+  const restartRotation = () => {
+    if (rotateTimer) window.clearInterval(rotateTimer);
+    if (reduceMotion) return;
+    rotateTimer = window.setInterval(() => {
+      setActiveTopic(activeIndex + 1);
+    }, rotateDelay);
+  };
+
+  restartRotation();
+};
+
 initMotionReveal();
 initTheme();
+initHeroPreview();
