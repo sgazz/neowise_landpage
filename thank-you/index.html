@@ -7,6 +7,17 @@
     <meta name="description" content="Thank you for applying to the Neowise private beta." />
     <link rel="canonical" href="https://www.neowise.ai/thank-you/" />
     <meta name="theme-color" content="#08050f" />
+  <script>
+    (function () {
+      var storageKey = 'neowiseTheme';
+      var saved = localStorage.getItem(storageKey);
+      var theme = saved === 'light' || saved === 'dark'
+        ? saved
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
     <link rel="icon" href="../assets/logo/favicon.ico" sizes="any" />
     <link rel="stylesheet" href="../css/styles.css" />
     <script src="../js/main.js" defer>
@@ -21,6 +32,12 @@
           <span class="site-brand__name">Neowise</span>
         </a>
         <div class="legal-nav-menu">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="theme-icon theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+          <svg class="theme-icon theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5z"></path></svg>
+          <span class="sr-only" data-theme-toggle-label>Switch to light theme</span>
+        </button>
+
           <a href="/">Home</a>
           <a href="/beta/">Beta</a>
           <a href="/privacy/">Privacy</a>
@@ -30,12 +47,12 @@
     <main id="main" class="thank-you-main">
       <section class="section">
         <div class="shell">
-          <div class="section-head wide">
-            <p class="eyebrow">Private beta</p>
-            <h1>Thank you for applying.</h1>
+          <div class="section-head motion-reveal wide">
+            <p class="eyebrow motion-reveal motion-delay-1">Private beta</p>
+            <h1 class="motion-reveal motion-delay-2">Thank you for applying.</h1>
             <p>Your request has been received. We are inviting a small group of early learners, educators, and lifelong learners to help shape Neowise before public launch.</p>
           </div>
-          <div class="card-grid four">
+          <div class="card-grid motion-reveal motion-delay-1 four">
             <article class="card">
               <span class="card-index">01</span>
               <h3>We review your request</h3>
@@ -60,7 +77,7 @@
         <div class="shell">
           <div class="share-panel" data-share-url="https://www.neowise.ai/beta/?utm_source=thank_you&utm_medium=share&utm_campaign=beta_invite" data-share-title="Join the Neowise private beta" data-share-text="Neowise is opening a private beta for learners, students, and educators. Help shape a personal AI learning mentor built around understanding, practice, memory, and progress.">
             <div>
-              <p class="eyebrow">Share</p>
+              <p class="eyebrow motion-reveal motion-delay-1">Share</p>
               <h2>Invite one learner who should test Neowise.</h2>
               <p>Know someone who cares deeply about learning? Send them the private beta invitation.</p>
             </div>
@@ -106,7 +123,7 @@
           </div>
           <div class="modal-panel" tabindex="-1">
             <button class="modal-close" type="button" aria-label="Close privacy settings" data-close-privacy-settings>&times;</button>
-            <p class="eyebrow">Privacy</p>
+            <p class="eyebrow motion-reveal motion-delay-1">Privacy</p>
             <h2 id="privacy-settings-title">Privacy settings</h2>
             <p>At this stage, Neowise only uses necessary local/session storage. Analytics and marketing cookies are not active.</p>
             <div class="preference-list">

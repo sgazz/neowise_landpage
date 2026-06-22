@@ -1,4 +1,6 @@
 const navToggle = document.querySelector('.nav-toggle');
+document.documentElement.classList.add('motion-ready');
+
 const navMenu = document.querySelector('#nav-menu');
 const betaModal = document.querySelector('#beta-modal');
 const betaPanel = betaModal?.querySelector('.modal-panel');
@@ -16,10 +18,40 @@ const NEOWISE_BETA_API_URL =
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 const cookiePreferenceKey = 'neowiseCookiePreferences';
+const themeStorageKey = 'neowiseTheme';
 let activeModal = null;
 let activePanel = null;
 let modalTrigger = null;
 let modalTimer = null;
+
+const revealImmediately = (elements) => {
+  elements.forEach((element) => {
+    element.classList.add('is-visible');
+  });
+};
+
+const initMotionReveal = () => {
+  const revealElements = [...document.querySelectorAll('.motion-reveal')];
+  if (!revealElements.length) return;
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealImmediately(revealElements);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.16, rootMargin: '0px 0px -6% 0px' }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+};
 
 const hasCookiePreferences = () => Boolean(localStorage.getItem(cookiePreferenceKey));
 
@@ -396,3 +428,57 @@ document.querySelectorAll('[data-share-beta]').forEach((button) => {
 document.querySelectorAll('[data-copy-beta-link]').forEach((button) => {
   button.addEventListener('click', () => copyBetaLink(getShareContext(button)));
 });
+
+const getPreferredTheme = () => {
+  const saved = localStorage.getItem(themeStorageKey);
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+};
+
+const applyTheme = (theme) => {
+  const isLight = theme === 'light';
+  if (isLight) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) metaTheme.content = isLight ? '#f4f6fa' : '#08050f';
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    button.setAttribute('aria-pressed', String(isLight));
+    const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+    button.setAttribute('aria-label', label);
+    const labelNode = button.querySelector('[data-theme-toggle-label]');
+    if (labelNode) labelNode.textContent = label;
+  });
+};
+
+const initTheme = () => {
+  applyTheme(getPreferredTheme());
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      localStorage.setItem(themeStorageKey, nextTheme);
+      applyTheme(nextTheme);
+    });
+  });
+
+  const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: light)');
+  const handleSchemeChange = (event) => {
+    if (!localStorage.getItem(themeStorageKey)) {
+      applyTheme(event.matches ? 'light' : 'dark');
+    }
+  };
+
+  if (typeof colorSchemeQuery.addEventListener === 'function') {
+    colorSchemeQuery.addEventListener('change', handleSchemeChange);
+  } else if (typeof colorSchemeQuery.addListener === 'function') {
+    colorSchemeQuery.addListener(handleSchemeChange);
+  }
+};
+
+initMotionReveal();
+initTheme();

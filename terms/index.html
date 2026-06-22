@@ -15,6 +15,17 @@
   <meta name="twitter:title" content="Terms of Service | Neowise" />
   <meta name="twitter:description" content="Draft Neowise Terms of Service for website visitors and beta access requests." />
   <meta name="theme-color" content="#08050f" />
+  <script>
+    (function () {
+      var storageKey = 'neowiseTheme';
+      var saved = localStorage.getItem(storageKey);
+      var theme = saved === 'light' || saved === 'dark'
+        ? saved
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
   <link rel="icon" href="../assets/logo/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/logo/favicon-16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png" />
@@ -27,7 +38,13 @@
   <header class="site-header">
     <nav class="nav legal-nav shell" aria-label="Primary navigation">
       <a class="site-brand" href="/" aria-label="Neowise home"><img src="../assets/logo/neowise-logo.png" alt="" class="site-brand__logo" /><span class="site-brand__name">Neowise</span></a>
-      <div class="legal-nav-menu"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/cookies/">Cookies</a><a href="/">Home</a></div>
+      <div class="legal-nav-menu">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="theme-icon theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+          <svg class="theme-icon theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5z"></path></svg>
+          <span class="sr-only" data-theme-toggle-label>Switch to light theme</span>
+        </button>
+<a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/cookies/">Cookies</a><a href="/">Home</a></div>
     </nav>
   </header>
   <main class="legal-main" id="main">

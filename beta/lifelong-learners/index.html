@@ -7,6 +7,17 @@
     <meta name="description" content="Adults, professionals, and self-directed learners are invited to test Neowise for career learning, independent study, and personal growth." />
     <link rel="canonical" href="https://www.neowise.ai/beta/lifelong-learners/" />
     <meta name="theme-color" content="#08050f" />
+  <script>
+    (function () {
+      var storageKey = 'neowiseTheme';
+      var saved = localStorage.getItem(storageKey);
+      var theme = saved === 'light' || saved === 'dark'
+        ? saved
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
     <link rel="icon" href="../../assets/logo/favicon.ico" sizes="any" />
     <link rel="stylesheet" href="../../css/styles.css" />
     <script src="../../js/main.js" defer>
@@ -21,6 +32,12 @@
           <span class="site-brand__name">Neowise</span>
         </a>
         <div class="legal-nav-menu">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="theme-icon theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+          <svg class="theme-icon theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5z"></path></svg>
+          <span class="sr-only" data-theme-toggle-label>Switch to light theme</span>
+        </button>
+
           <a href="/beta/">Beta</a>
           <a href="/">Home</a>
         </div>
@@ -30,15 +47,15 @@
       <section class="beta-hero">
         <div class="shell beta-hero-grid">
           <div>
-            <p class="eyebrow">Private beta</p>
-            <h1>Private beta for lifelong learners building knowledge on their own terms.</h1>
-            <p class="hero-text">Adults, professionals, and self-directed learners are invited to test Neowise for career learning, independent study, and personal growth.</p>
-            <div class="hero-actions">
+            <p class="eyebrow motion-reveal motion-delay-1">Private beta</p>
+            <h1 class="motion-reveal motion-delay-2">Private beta for lifelong learners building knowledge on their own terms.</h1>
+            <p class="hero-text motion-reveal motion-delay-3">Adults, professionals, and self-directed learners are invited to test Neowise for career learning, independent study, and personal growth.</p>
+            <div class="hero-actions motion-reveal motion-delay-4">
               <a class="button button-primary" href="/beta/?utm_source=lifelong_page&utm_medium=landing&utm_campaign=beta_lifelong">Apply as a lifelong learner</a>
               <a class="button button-secondary" href="/beta/">See full beta program</a>
             </div>
           </div>
-          <aside class="beta-hero-card">
+          <aside class="beta-hero-card motion-reveal motion-delay-4">
             <span>Why this group matters</span>
             <strong>Real learning context</strong>
             <p>Neowise needs feedback from people using it with actual goals, constraints, and learning material.</p>
@@ -47,11 +64,11 @@
       </section>
       <section class="section">
         <div class="shell">
-          <div class="section-head">
-            <p class="eyebrow">What to test</p>
+          <div class="section-head motion-reveal">
+            <p class="eyebrow motion-reveal motion-delay-1">What to test</p>
             <h2>Help us test what matters.</h2>
           </div>
-          <div class="card-grid three">
+          <div class="card-grid motion-reveal motion-delay-1 three">
             <article class="card">
               <h3>Bring your own learning goal</h3>
               <p>Share practical feedback from real learning use, not abstract testing.</p>
@@ -71,7 +88,7 @@
         <div class="shell">
           <div class="share-panel" data-share-url="https://www.neowise.ai/beta/?utm_source=copy&utm_medium=referral&utm_campaign=beta_lifelong" data-share-title="Join the Neowise private beta" data-share-text="Neowise is opening a private beta for learners, students, and educators. Help shape a personal AI learning mentor built around understanding, practice, memory, and progress.">
             <div>
-              <p class="eyebrow">Share</p>
+              <p class="eyebrow motion-reveal motion-delay-1">Share</p>
               <h2>Invite one learner who should test Neowise.</h2>
               <p>Know someone who cares deeply about learning? Send them the private beta invitation.</p>
             </div>
@@ -111,7 +128,7 @@
           </div>
           <div class="modal-panel" tabindex="-1">
             <button class="modal-close" type="button" aria-label="Close privacy settings" data-close-privacy-settings>&times;</button>
-            <p class="eyebrow">Privacy</p>
+            <p class="eyebrow motion-reveal motion-delay-1">Privacy</p>
             <h2 id="privacy-settings-title">Privacy settings</h2>
             <p>At this stage, Neowise only uses necessary local/session storage. Analytics and marketing cookies are not active.</p>
             <div class="preference-list">

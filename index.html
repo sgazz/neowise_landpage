@@ -18,6 +18,17 @@
   <meta name="twitter:description" content="Neowise builds a learning profile, tracks understanding, and helps learners practice, remember, and progress over time." />
   <meta name="theme-color" content="#08050f" />
 
+  <script>
+    (function () {
+      var storageKey = 'neowiseTheme';
+      var saved = localStorage.getItem(storageKey);
+      var theme = saved === 'light' || saved === 'dark'
+        ? saved
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
   <link rel="icon" href="assets/logo/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/logo/favicon-16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png" />
@@ -36,12 +47,20 @@
         <span class="site-brand__name">Neowise</span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-        <span class="sr-only">Open navigation</span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="theme-icon theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+          <svg class="theme-icon theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5z"></path></svg>
+          <span class="sr-only" data-theme-toggle-label>Switch to light theme</span>
+        </button>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+          <span class="sr-only">Open navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
 
       <div class="nav-menu" id="nav-menu">
         <a href="#what">Concept</a>
@@ -59,11 +78,11 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="badge"><span aria-hidden="true"></span>The operating system for human learning</p>
-          <h1 id="hero-title">The operating system for human learning.</h1>
-          <p class="hero-text">Neowise is a personal AI learning mentor that builds a learning profile, tracks understanding, and helps learners practice, remember, and progress over time.</p>
+          <p class="badge motion-reveal motion-delay-1"><span aria-hidden="true"></span>The operating system for human learning</p>
+          <h1 id="hero-title" class="motion-reveal motion-delay-2">The operating system for human learning.</h1>
+          <p class="hero-text motion-reveal motion-delay-3">Neowise is a personal AI learning mentor that builds a learning profile, tracks understanding, and helps learners practice, remember, and progress over time.</p>
 
-          <div class="hero-actions" aria-label="Hero actions">
+          <div class="hero-actions motion-reveal motion-delay-4" aria-label="Hero actions">
             <a class="button button-primary" href="/beta/">Apply for private beta</a>
             <a class="button button-secondary" href="#how">Explore how it works</a>
           </div>
@@ -71,7 +90,7 @@
           <p class="trust-line">Built for students, exam preparation, and self-directed learners.</p>
         </div>
 
-        <aside class="hero-preview" aria-label="Neowise learning system preview">
+        <aside class="hero-preview motion-reveal motion-delay-4" aria-label="Neowise learning system preview">
           <div class="preview-card">
             <div class="preview-header">
               <span>Current topic</span>
@@ -100,17 +119,17 @@
 
     <section class="section" id="problem" aria-labelledby="problem-title">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">Problem</p>
+        <div class="section-head motion-reveal">
+          <p class="eyebrow motion-reveal motion-delay-1">Problem</p>
           <h2 id="problem-title">Learning tools were not built around the individual.</h2>
         </div>
-        <div class="card-grid three">
+        <div class="card-grid motion-reveal motion-delay-1 three">
           <article class="card"><span class="card-index">01</span><h3>Fragmented tools</h3><p>Notes, videos, courses, flashcards, and AI chats live in separate places.</p></article>
           <article class="card"><span class="card-index">02</span><h3>No learning memory</h3><p>Most tools help in the moment, but forget what you understood, missed, or need next.</p></article>
           <article class="card"><span class="card-index">03</span><h3>One-size-fits-all systems</h3><p>Learners move at different speeds, but most platforms still explain the same way to everyone.</p></article>
         </div>
 
-        <div class="education-comparison" aria-label="How Neowise compares with other learning systems">
+        <div class="education-comparison motion-reveal motion-delay-1" aria-label="How Neowise compares with other learning systems">
           <article class="compare-card">
             <h3>Traditional Education</h3>
             <ul><li>Same pace</li><li>Same curriculum</li><li>Same path for everyone</li></ul>
@@ -129,11 +148,11 @@
 
     <section class="section section-muted" id="why-now" aria-labelledby="why-now-title">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">Why now</p>
+        <div class="section-head motion-reveal">
+          <p class="eyebrow motion-reveal motion-delay-1">Why now</p>
           <h2 id="why-now-title">Personal learning is finally possible at scale.</h2>
         </div>
-        <div class="card-grid three staggered">
+        <div class="card-grid motion-reveal motion-delay-1 three staggered">
           <article class="card"><span class="card-index">01</span><h3>AI can now explain</h3><p>Modern AI can adapt explanations to different levels, goals, and learning styles.</p></article>
           <article class="card"><span class="card-index">02</span><h3>Learning is already digital</h3><p>Students and lifelong learners already study across devices, documents, videos, and chat.</p></article>
           <article class="card"><span class="card-index">03</span><h3>People need continuous learning</h3><p>Careers, exams, and personal growth now require learning that continues beyond school.</p></article>
@@ -143,8 +162,8 @@
 
     <section class="section" id="what" aria-labelledby="what-title">
       <div class="shell">
-        <div class="section-head wide">
-          <p class="eyebrow">Concept</p>
+        <div class="section-head motion-reveal wide">
+          <p class="eyebrow motion-reveal motion-delay-1">Concept</p>
           <h2 id="what-title">A personal learning system, not just another AI chat.</h2>
           <p>Neowise is designed to connect understanding, practice, memory, and progress into one continuous learning experience.</p>
         </div>
@@ -153,11 +172,11 @@
 
     <section class="section section-muted" id="platform" aria-labelledby="platform-title">
       <div class="shell">
-        <div class="section-head wide">
-          <p class="eyebrow">Platform</p>
+        <div class="section-head motion-reveal wide">
+          <p class="eyebrow motion-reveal motion-delay-1">Platform</p>
           <h2 id="platform-title">What Neowise brings together.</h2>
         </div>
-        <div class="card-grid four feature-grid">
+        <div class="card-grid motion-reveal motion-delay-1 four feature-grid">
           <article class="card feature-card"><h3>AI Mentor</h3><p>A conversational assistant with contextual memory that helps explain, question, and guide.</p></article>
           <article class="card feature-card"><h3>Documents</h3><p>Bring learning materials into the study flow so answers stay connected to context.</p></article>
           <article class="card feature-card"><h3>Study Rooms</h3><p>Shared learning environments with AI support for group notes, discussion, and collaboration.</p></article>
@@ -168,8 +187,8 @@
 
     <section class="section section-muted" id="how" aria-labelledby="how-title">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">How it works</p>
+        <div class="section-head motion-reveal">
+          <p class="eyebrow motion-reveal motion-delay-1">How it works</p>
           <h2 id="how-title">How Neowise supports the learning loop.</h2>
         </div>
         <ol class="steps">
@@ -183,12 +202,12 @@
 
     <section class="section" id="learning-profile" aria-labelledby="learning-profile-title">
       <div class="shell">
-        <div class="section-head wide">
-          <p class="eyebrow">Learning profile</p>
+        <div class="section-head motion-reveal wide">
+          <p class="eyebrow motion-reveal motion-delay-1">Learning profile</p>
           <h2 id="learning-profile-title">How Neowise learns you.</h2>
           <p>Every interaction helps Neowise build a more accurate model of how you learn.</p>
         </div>
-        <div class="learning-loop">
+        <div class="learning-loop motion-reveal motion-delay-1">
           <div class="loop-step"><span>01</span><strong>You study</strong></div>
           <div class="loop-step"><span>02</span><strong>Neowise observes</strong></div>
           <div class="loop-step"><span>03</span><strong>Builds learning profile</strong></div>
@@ -200,9 +219,9 @@
     </section>
 
     <section class="section" id="mentor" aria-labelledby="mentor-title">
-      <div class="shell split-panel">
+      <div class="shell split-panel motion-reveal motion-delay-1">
         <div>
-          <p class="eyebrow">AI mentor</p>
+          <p class="eyebrow motion-reveal motion-delay-1">AI mentor</p>
           <h2 id="mentor-title">An AI mentor that learns how to help you learn.</h2>
           <p>Neowise is not designed to replace teachers, schools, or curiosity. It gives each learner a more personal layer of guidance between formal education, self-study, and real progress.</p>
         </div>
@@ -216,11 +235,11 @@
 
     <section class="section section-muted" id="for-who" aria-labelledby="for-who-title">
       <div class="shell">
-        <div class="section-head wide">
-          <p class="eyebrow">Who it's for</p>
+        <div class="section-head motion-reveal wide">
+          <p class="eyebrow motion-reveal motion-delay-1">Who it's for</p>
           <h2 id="for-who-title">Built for different learners with the same need: personal guidance.</h2>
         </div>
-        <div class="card-grid three">
+        <div class="card-grid motion-reveal motion-delay-1 three">
           <article class="card"><h3>University students</h3><p>For managing multiple subjects, deadlines, and exam preparation.</p></article>
           <article class="card"><h3>Secondary school pupils</h3><p>For patient explanations, practice, and confidence before tests.</p></article>
           <article class="card"><h3>Lifelong learners</h3><p>For adults reskilling, exploring new fields, or learning independently.</p></article>
@@ -230,11 +249,11 @@
 
     <section class="section" id="difference" aria-labelledby="difference-title">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">Why different</p>
+        <div class="section-head motion-reveal">
+          <p class="eyebrow motion-reveal motion-delay-1">Why different</p>
           <h2 id="difference-title">From isolated answers to continuous learning.</h2>
         </div>
-        <div class="comparison">
+        <div class="comparison motion-reveal motion-delay-1">
           <article class="compare-card"><h3>Generic AI chat</h3><ul><li>Answers one question at a time</li><li>Limited continuity</li><li>No structured learning path</li><li>Easy to lose context</li></ul></article>
           <article class="compare-card highlighted"><h3>Neowise</h3><ul><li>Builds around the learner</li><li>Connects topics, practice, and memory</li><li>Supports long-term progress</li><li>Guides the next useful step</li></ul></article>
         </div>
@@ -243,12 +262,12 @@
 
     <section class="section section-muted" id="feedback" aria-labelledby="feedback-title">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">Early feedback</p>
+        <div class="section-head motion-reveal">
+          <p class="eyebrow motion-reveal motion-delay-1">Early feedback</p>
           <h2 id="feedback-title">Early feedback.</h2>
           <p>Qualitative feedback from early product conversations and prototype testing.</p>
         </div>
-        <div class="testimonial-grid">
+        <div class="testimonial-grid motion-reveal motion-delay-1">
           <figure class="testimonial-card"><blockquote>“It actually feels like it knows me.”</blockquote><figcaption>— Beta tester</figcaption></figure>
           <figure class="testimonial-card"><blockquote>“I stopped opening three different study tools. Everything I need is in one place.”</blockquote><figcaption>— Early user</figcaption></figure>
           <figure class="testimonial-card"><blockquote>“The mentor doesn’t just answer questions. It remembers what I struggle with.”</blockquote><figcaption>— Beta tester</figcaption></figure>
@@ -258,11 +277,11 @@
 
     <section class="section" id="roadmap" aria-labelledby="roadmap-title">
       <div class="shell">
-        <div class="section-head wide">
-          <p class="eyebrow">Roadmap</p>
+        <div class="section-head motion-reveal wide">
+          <p class="eyebrow motion-reveal motion-delay-1">Roadmap</p>
           <h2 id="roadmap-title">Building the future of personalized learning.</h2>
         </div>
-        <div class="roadmap-grid">
+        <div class="roadmap-grid motion-reveal motion-delay-1">
           <article class="roadmap-card"><h3>Today</h3><ul><li>AI Mentor</li><li>Study Rooms</li><li>Documents</li><li>Exam Simulator</li></ul></article>
           <article class="roadmap-card"><h3>Next</h3><ul><li>Persistent Learning Graph</li><li>Advanced Knowledge Retention</li><li>Cross-subject Connections</li></ul></article>
           <article class="roadmap-card"><h3>Future</h3><ul><li>Autonomous Learning Agent</li><li>Lifelong Learning Profile</li><li>Adaptive Learning Ecosystem</li></ul></article>
@@ -272,9 +291,9 @@
     </section>
 
     <section class="section section-muted" id="institutions" aria-labelledby="institutions-title">
-      <div class="shell split-panel">
+      <div class="shell split-panel motion-reveal motion-delay-1">
         <div>
-          <p class="eyebrow">Institutions</p>
+          <p class="eyebrow motion-reveal motion-delay-1">Institutions</p>
           <h2 id="institutions-title">Designed with institutions in mind.</h2>
           <p>Neowise is being designed for universities, learning teams, and education programs that need private knowledge bases, secure document processing, and integration with existing learning workflows.</p>
         </div>
@@ -289,11 +308,11 @@
 
     <section class="section section-muted" id="trust" aria-labelledby="trust-title">
       <div class="shell">
-        <div class="section-head wide">
-          <p class="eyebrow">Trust</p>
+        <div class="section-head motion-reveal wide">
+          <p class="eyebrow motion-reveal motion-delay-1">Trust</p>
           <h2 id="trust-title">Built with early learners before public launch.</h2>
         </div>
-        <div class="trust-grid">
+        <div class="trust-grid motion-reveal motion-delay-1">
           <article class="trust-card"><h3>Who is behind Neowise</h3><p>Neowise is being built by a small product team combining software engineering, learning design, and hands-on experimentation with AI-assisted education.</p></article>
           <article class="trust-card"><h3>Why now</h3><p>AI has made individual guidance possible at a scale that older learning platforms could not support. The question is no longer whether AI can answer a question, but whether it can help a person build lasting understanding.</p></article>
           <article class="trust-card"><h3>What beta testers get</h3><p>Beta testers get early access to Neowise, a chance to use it with real learning material, and a direct role in shaping how the system explains, remembers, guides, and supports learning.</p></article>
@@ -305,9 +324,9 @@
     </section>
 
     <section class="section beta-section" id="beta" aria-labelledby="beta-title">
-      <div class="shell beta-panel">
+      <div class="shell beta-panel motion-reveal motion-delay-1">
         <div>
-          <p class="eyebrow">Private beta</p>
+          <p class="eyebrow motion-reveal motion-delay-1">Private beta</p>
           <h2 id="beta-title">Help shape Neowise before public launch.</h2>
           <p>The beta tester program has its own page for early learners, students, and educators who want to test Neowise with real learning material.</p>
         </div>
@@ -321,11 +340,11 @@
 
     <section class="section" id="faq" aria-labelledby="faq-title">
       <div class="shell faq-shell">
-        <div class="section-head center">
-          <p class="eyebrow">FAQ</p>
+        <div class="section-head motion-reveal center">
+          <p class="eyebrow motion-reveal motion-delay-1">FAQ</p>
           <h2 id="faq-title">Questions before joining the beta.</h2>
         </div>
-        <div class="faq-list">
+        <div class="faq-list motion-reveal motion-delay-1">
           <details><summary>Is Neowise another ChatGPT wrapper?</summary><p>No. Generic AI chat answers questions in the moment. Neowise is designed around continuity: what you are learning, what you understand, what you need to practice, what you forget, and what should come next.</p></details>
           <details><summary>Who is Neowise for?</summary><p>Neowise is for students, exam preparation, secondary school pupils, and lifelong learners who want more personal structure while learning.</p></details>
           <details><summary>Does Neowise replace teachers?</summary><p>No. Neowise is a personal learning layer. It helps learners prepare, practice, understand, and continue between classes, courses, or independent study.</p></details>
@@ -340,7 +359,7 @@
     <div class="modal-backdrop" data-close-beta-modal></div>
     <div class="modal-panel" tabindex="-1">
       <button class="modal-close" type="button" aria-label="Close beta modal" data-close-beta-modal>&times;</button>
-      <p class="eyebrow">Private beta</p>
+      <p class="eyebrow motion-reveal motion-delay-1">Private beta</p>
       <h2 id="beta-modal-title">Join the Neowise beta community</h2>
       <p>Be among the first learners to help shape a personal AI mentor designed around understanding, practice, memory, and progress.</p>
 
@@ -376,7 +395,7 @@
     <div class="modal-backdrop" data-close-privacy-settings></div>
     <div class="modal-panel" tabindex="-1">
       <button class="modal-close" type="button" aria-label="Close privacy settings" data-close-privacy-settings>&times;</button>
-      <p class="eyebrow">Privacy</p>
+      <p class="eyebrow motion-reveal motion-delay-1">Privacy</p>
       <h2 id="privacy-settings-title">Privacy settings</h2>
       <p>At this stage, Neowise only uses necessary local/session storage. Analytics and marketing cookies are not active.</p>
 
