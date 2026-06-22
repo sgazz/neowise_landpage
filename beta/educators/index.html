@@ -6,14 +6,12 @@
     <title>Private beta for educators who care about individual learning. | Neowise</title>
     <meta name="description" content="Neowise is not designed to replace educators. It is designed to support learners between lessons, sessions, and study moments." />
     <link rel="canonical" href="https://www.neowise.ai/beta/educators/" />
-    <meta name="theme-color" content="#08050f" />
+    <meta name="theme-color" content="#f4f6fa" />
   <script>
     (function () {
       var storageKey = 'neowiseTheme';
       var saved = localStorage.getItem(storageKey);
-      var theme = saved === 'light' || saved === 'dark'
-        ? saved
-        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      var theme = saved === 'light' || saved === 'dark' ? saved : 'light';
       if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
     })();
   </script>
@@ -32,10 +30,10 @@
           <span class="site-brand__name">Neowise</span>
         </a>
         <div class="legal-nav-menu">
-          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="true" aria-label="Switch to dark theme">
           <svg class="theme-icon theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
           <svg class="theme-icon theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5z"></path></svg>
-          <span class="sr-only" data-theme-toggle-label>Switch to light theme</span>
+          <span class="sr-only" data-theme-toggle-label>Switch to dark theme</span>
         </button>
 
           <a href="/beta/">Beta</a>

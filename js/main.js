@@ -432,7 +432,7 @@ document.querySelectorAll('[data-copy-beta-link]').forEach((button) => {
 const getPreferredTheme = () => {
   const saved = localStorage.getItem(themeStorageKey);
   if (saved === 'light' || saved === 'dark') return saved;
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  return 'light';
 };
 
 const applyTheme = (theme) => {
@@ -465,19 +465,6 @@ const initTheme = () => {
       applyTheme(nextTheme);
     });
   });
-
-  const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: light)');
-  const handleSchemeChange = (event) => {
-    if (!localStorage.getItem(themeStorageKey)) {
-      applyTheme(event.matches ? 'light' : 'dark');
-    }
-  };
-
-  if (typeof colorSchemeQuery.addEventListener === 'function') {
-    colorSchemeQuery.addEventListener('change', handleSchemeChange);
-  } else if (typeof colorSchemeQuery.addListener === 'function') {
-    colorSchemeQuery.addListener(handleSchemeChange);
-  }
 };
 
 initMotionReveal();

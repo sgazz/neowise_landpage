@@ -6,14 +6,12 @@
     <title>Thank you for applying | Neowise</title>
     <meta name="description" content="Thank you for applying to the Neowise private beta." />
     <link rel="canonical" href="https://www.neowise.ai/thank-you/" />
-    <meta name="theme-color" content="#08050f" />
+    <meta name="theme-color" content="#f4f6fa" />
   <script>
     (function () {
       var storageKey = 'neowiseTheme';
       var saved = localStorage.getItem(storageKey);
-      var theme = saved === 'light' || saved === 'dark'
-        ? saved
-        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      var theme = saved === 'light' || saved === 'dark' ? saved : 'light';
       if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
     })();
   </script>
@@ -32,10 +30,10 @@
           <span class="site-brand__name">Neowise</span>
         </a>
         <div class="legal-nav-menu">
-          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="true" aria-label="Switch to dark theme">
           <svg class="theme-icon theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
           <svg class="theme-icon theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5z"></path></svg>
-          <span class="sr-only" data-theme-toggle-label>Switch to light theme</span>
+          <span class="sr-only" data-theme-toggle-label>Switch to dark theme</span>
         </button>
 
           <a href="/">Home</a>
@@ -86,28 +84,27 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path d="M18 16.1c-.76 0-1.44.3-1.96.77L8.91 12.7a3.23 3.23 0 0 0 0-1.39l7.05-4.12A2.99 2.99 0 1 0 15 5c0 .23.03.45.08.66L8.03 9.78a3 3 0 1 0 0 4.44l7.12 4.18c-.04.19-.06.39-.06.6a3 3 0 1 0 2.91-2.9Z" />
                 </svg>Share invitation</button>
-                <button class="share-button" type="button" data-copy-beta-link>
-                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path d="M8 7a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4h-1v-2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v1H8V7Zm-5 5a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-5Z" />
-                  </svg>Copy beta link</button>
-                  <a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dthank_you%26utm_medium%3Dshare%26utm_campaign%3Dbeta_invite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                  <a class="share-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dbeta_invite&text=Neowise%20is%20inviting%20early%20learners%20to%20test%20a%20personal%20learning%20system." target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                  <a class="share-link" href="https://wa.me/?text=Neowise%20is%20inviting%20early%20learners%20to%20test%20a%20personal%20learning%20system%3A%20https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dwhatsapp%26utm_medium%3Dmessage%26utm_campaign%3Dbeta_invite" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                  <a class="share-link" href="mailto:?subject=Neowise private beta invitation&body=I thought you might be interested in testing Neowise, a personal learning system currently in private beta.%0A%0AApply here:%0Ahttps://www.neowise.ai/beta/?utm_source=email&utm_medium=referral&utm_campaign=beta_invite">Email</a>
-                </div>
-                <input class="share-copy-source" type="text" value="https://www.neowise.ai/beta/?utm_source=thank_you&utm_medium=share&utm_campaign=beta_invite" readonly tabindex="-1" aria-hidden="true" />
-                <p class="share-status" data-share-status aria-live="polite">
-                </p>
-              </div>
+              <button class="share-button" type="button" data-copy-beta-link>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M8 7a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4h-1v-2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v1H8V7Zm-5 5a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-5Z" />
+                </svg>Copy beta link</button>
+              <a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dthank_you%26utm_medium%3Dshare%26utm_campaign%3Dbeta_invite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="share-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dbeta_invite&text=Neowise%20is%20inviting%20early%20learners%20to%20test%20a%20personal%20learning%20system." target="_blank" rel="noopener noreferrer">X / Twitter</a>
+              <a class="share-link" href="https://wa.me/?text=Neowise%20is%20inviting%20early%20learners%20to%20test%20a%20personal%20learning%20system%3A%20https%3A%2F%2Fwww.neowise.ai%2Fbeta%2F%3Futm_source%3Dwhatsapp%26utm_medium%3Dmessage%26utm_campaign%3Dbeta_invite" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a class="share-link" href="mailto:?subject=Neowise private beta invitation&body=I thought you might be interested in testing Neowise, a personal learning system currently in private beta.%0A%0AApply here:%0Ahttps://www.neowise.ai/beta/?utm_source=email&utm_medium=referral&utm_campaign=beta_invite">Email</a>
             </div>
-          </section>
-          <section class="section">
-            <div class="shell hero-actions">
-              <a class="button button-primary" href="/beta/">Back to private beta</a>
-              <a class="button button-secondary" href="/">Back to main site</a>
-            </div>
-          </section>
-        </main>
+            <input class="share-copy-source" type="text" value="https://www.neowise.ai/beta/?utm_source=thank_you&utm_medium=share&utm_campaign=beta_invite" readonly tabindex="-1" aria-hidden="true" />
+            <p class="share-status" data-share-status aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="shell hero-actions">
+          <a class="button button-primary" href="/beta/">Back to private beta</a>
+          <a class="button button-secondary" href="/">Back to main site</a>
+        </div>
+      </section>
+    </main>
         <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie notice" hidden>
           <div>
             <strong>Privacy-first preferences</strong>
